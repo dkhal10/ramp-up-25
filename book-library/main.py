@@ -28,11 +28,8 @@ def get(id: int):
         return books[id]
 @app.put("/books/{id}")
 def put(id: int, book: Book):
-    if id not in books:
-        raise HTTPException(status_code=404, detail="Book not found")
-    else:
-        books[id] = book
-        return {"message": f"updated {id} {book}"}
+    books[id] = book
+    return {"message": f"updated {id} {book}"}
 @app.delete("/books/{id}")
 def delete(id: int):
     if id not in books:
